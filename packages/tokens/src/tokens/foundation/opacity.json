@@ -1,0 +1,39 @@
+{
+  "opacity": {
+    "0": {
+      "type": "opacity",
+      "value": "0",
+      "theme": "global"
+    },
+    "10": {
+      "type": "opacity",
+      "value": "10",
+      "theme": "global"
+    },
+    "25": {
+      "type": "opacity",
+      "value": "25",
+      "theme": "global"
+    },
+    "50": {
+      "type": "opacity",
+      "value": "50",
+      "theme": "global"
+    },
+    "75": {
+      "type": "opacity",
+      "value": "75",
+      "theme": "global"
+    },
+    "90": {
+      "type": "opacity",
+      "value": "90",
+      "theme": "global"
+    },
+    "100": {
+      "type": "opacity",
+      "value": "100",
+      "theme": "global"
+    }
+  }
+}

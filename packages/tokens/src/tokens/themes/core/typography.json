@@ -1,0 +1,38 @@
+{
+  "typography": {
+    "family": {
+      "base": { "value": "{font.family.roboto.name.value}", "theme": "core" },
+      "highlight": { "value": "{font.family.poppins.name.value}", "theme": "core" }
+    },
+    "size": {
+      "50": { "value": "{font.size.50.value}", "theme": "core" },
+      "75": { "value": "{font.size.75.value}", "theme": "core" },
+      "100": { "value": "{font.size.100.value}", "theme": "core" },
+      "200": { "value": "{font.size.200.value}", "theme": "core" },
+      "300": { "value": "{font.size.300.value}", "theme": "core" },
+      "400": { "value": "{font.size.400.value}", "theme": "core" },
+      "500": { "value": "{font.size.500.value}", "theme": "core" },
+      "600": { "value": "{font.size.600.value}", "theme": "core" },
+      "700": { "value": "{font.size.700.value}", "theme": "core" },
+      "800": { "value": "{font.size.800.value}", "theme": "core" },
+      "900": { "value": "{font.size.900.value}", "theme": "core" },
+      "1000": { "value": "{font.size.1000.value}", "theme": "core" },
+      "1100": { "value": "{font.size.1100.value}", "theme": "core" },
+      "1200": { "value": "{font.size.1200.value}", "theme": "core" },
+      "1300": { "value": "{font.size.1300.value}", "theme": "core" }
+    },
+    "weight": {
+      "01": { "value": "{font.weight.300.value}", "type": "core" },
+      "02": { "value": "{font.weight.400.value}", "type": "core" },
+      "03": { "value": "{font.weight.700.value}", "type": "core" }
+    },
+    "lineHeight": {
+      "50": { "value": "{font.lineHeight.50.value}", "theme": "core" },
+      "100": { "value": "{font.lineHeight.100.value}", "theme": "core" },
+      "200": { "value": "{font.lineHeight.200.value}", "theme": "core" }
+    },
+    "letterSpacing": {
+      "0": { "value": "{font.letterSpacing.0.value}", "theme": "core" }
+    }
+  }
+}

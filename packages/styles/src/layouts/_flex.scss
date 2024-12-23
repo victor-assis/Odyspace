@@ -1,0 +1,9 @@
+/*
+** Odyspace Styles Flexbox
+*/
+@use '../mixins/flex' as *;
+
+/// @group module-flex
+.ody-f {
+  @include create-flex-helpers();
+}

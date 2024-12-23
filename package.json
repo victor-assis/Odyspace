@@ -14,7 +14,7 @@
     "lint": "nx affected -t lint",
     "stylelint": "nx affected -t stylelint",
     "zip": "nx run-many -t zip",
-    "clear": "shx rm -rf dist && shx rm -rf coverage",
+    "clear": "shx rm -rf dist && shx rm -rf coverage && nx clear-cache",
     "release": "nx release --first-release --yes"
   },
   "devDependencies": {
