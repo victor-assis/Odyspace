@@ -1,0 +1,79 @@
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:map';
+
+/// convert valores para rem
+/// @param {Number} $number - Número para converter
+/// @param {context} $context - Base para a conversão
+/// @return {Number} - valor em rem
+/// @example scss - Retorna um valor convertido para rem
+///   margin: rem(32);
+///   // margin: 2rem
+///
+@function rem($number, $context: 16) {
+  @if math.is-unitless($number) == false {
+    $number: strip-unit($number);
+  }
+
+  @return math.div($number, $context) * 1rem;
+}
+
+/// Remove a unidade de um numero
+/// @param {Number} $number - Número para remover a unidade
+/// @return {Number} - número sem unidade
+/// @example scss - Remove a unidade de um número
+///   $margin: 32px;
+///   div {
+///    margin: rem(strip-unit($margin), 16);
+///   }
+///   // margin: 2rem
+///
+@function strip-unit($number) {
+  @if meta.type-of($number) == 'string' and string.index($number, "rem") {
+    $number: string.slice($number, 1, string.index($number, "rem") - 1);
+
+    @return to-number($number);
+  }
+
+  @if meta.type-of($number) == 'number' and math.is-unitless($number) == false {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return to-number($number);
+}
+
+/// Converte uma string para numero
+/// @param {String} $value - Valor para converter
+/// @return {Number} - número
+///
+@function to-number($value) {
+  @if meta.type-of($value) == 'number' {
+    @return $value;
+  } @else if meta.type-of($value) != 'string' {
+    @error 'Value for `to-number` should be a number or a string.';
+  }
+
+  $result: 0;
+  $digits: 0;
+  $minus: string.slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+
+  @for $i from if($minus, 2, 1) through string.length($value) {
+    $character: string.slice($value, $i, $i);
+
+    @if (list.index(map.keys($numbers), $character) or $character == '.') {
+      @if $character == '.' {
+        $digits: 1;
+      } @else if $digits == 0 {
+        $result: $result * 10 + map.get($numbers, $character);
+      } @else {
+        $digits: $digits * 10;
+        $result: $result + map.get($numbers, $character) / $digits;
+      }
+    }
+  }
+
+  @return if($minus, -$result, $result);;
+}

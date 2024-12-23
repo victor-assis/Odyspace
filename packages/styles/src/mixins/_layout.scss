@@ -1,0 +1,327 @@
+/*
+** Odyspace styles - Containers Mixins
+*/
+@use 'tokens' as tokens;
+@use '../base/config' as config;
+@use '../functions/list' as *;
+@use '../functions/tokens-handler' as *;
+@use '../functions/unit-transform' as *;
+@use './media-query' as *;
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:map';
+
+$tokens-map: meta.module-variables(tokens);
+
+/// Gera containers responsivos
+/// @group module-internal
+/// @example scss
+///   .ody-container {
+///     @include create-container();
+///   }
+///   /* output:
+///   .ody-container {
+///     ...
+///     @media (min-width: 48rem){}
+///     @media (min-width: 64rem){}
+///     @media (min-width: 80rem){}
+///     @media (min-width: 100rem){}
+///   }
+/// */
+@mixin create-container() {
+  $containers: map-by-string($tokens-map, 'ody-layout-container');
+  $padding: map-by-string($tokens-map, 'ody-layout-padding');
+
+  max-width: list.nth(map.values($containers), 1);
+  padding: 0 list.nth(map.values($padding), 1);
+
+  @each $key, $container in $containers {
+    $breakpoint: string-key-split($key, '-', 4);
+
+    @if (
+      list.index(
+          map.keys($containers),
+          'ody-layout-container-#{$breakpoint}'
+        ) !=
+        1
+    ) {
+      @include media-q($from: $breakpoint, $media-type: 'screen') {
+        max-width: $container;
+        padding: 0 map.get($padding, 'ody-layout-padding-#{$breakpoint}');
+      }
+    }
+
+    &-#{$breakpoint} {
+      @each $key, $container-second in $containers {
+        $breakpoint-second: string-key-split($key, '-', 4);
+
+        @if (
+          list.index(
+              map.keys($containers),
+              'ody-layout-container-#{$breakpoint}'
+            ) >=
+            list.index(
+              map.keys($containers),
+              'ody-layout-container-#{$breakpoint-second}'
+            )
+        ) {
+          @include media-q($from: $breakpoint-second, $media-type: 'screen') {
+            max-width: $container-second;
+            padding: 0 map.get($padding, 'ody-layout-padding-#{$breakpoint-second}');
+          }
+        }
+      }
+    }
+  }
+}
+
+/// Gera containers responsivos com o mesmo padding para todos os lados
+/// @group module-internal
+/// @todo renomear ou remover e usar os helpers de padding
+/// @example scss
+///   .ody-container-fluid {
+///     @include create-container-fluid();
+///   }
+///   /* output:
+///   .ody-container-fluid {
+///     ...
+///     @media (min-width: 48rem){}
+///     @media (min-width: 64rem){}
+///     @media (min-width: 80rem){}
+///     @media (min-width: 100rem){}
+///   }
+/// */
+@mixin create-container-fluid() {
+  $paddings: map-by-string($tokens-map, 'ody-layout-padding');
+
+  @each $key, $padding in $paddings {
+    $breakpoint: string-key-split($key, '-', 4);
+
+    @include media-q($from: $breakpoint, $media-type: 'screen') {
+      $paddingValue: $padding;
+
+      padding-left: $paddingValue;
+      padding-right: $paddingValue;
+    }
+  }
+}
+
+/// Gera rows responsivos. A quantidade de colunas é baseada nos tokens
+/// $ody_layout_columns
+/// @group module-internal
+/// @example scss
+///   .ody-row {
+///     @include create-row();
+///   }
+///   /* output:
+///   .ody-row {
+///     ...
+///     @media (min-width: 48rem){}
+///     @media (min-width: 64rem){}
+///     @media (min-width: 80rem){}
+///     @media (min-width: 100rem){}
+///   }
+/// */
+@mixin create-row() {
+  $rows: map-by-string($tokens-map, 'ody-layout-columns');
+  $gutters: map-by-string($tokens-map, 'ody-layout-gutter');
+  $minGutterKey: --#{str-replace(list.nth(map.keys($gutters), 1), '-', '_')};
+
+  gap: var($minGutterKey, #{get-min($gutters)}rem);
+  grid-template-columns: repeat(get-min($rows), minmax(0, 1fr));
+
+  @each $key, $row in $rows {
+    $breakpoint: string-key-split($key, '-', 4);
+
+    @if (
+      list.index(map.keys($rows), 'ody-layout-columns-#{$breakpoint}') != 1
+    ) {
+      @include media-q($from: $breakpoint, $media-type: 'screen') {
+        gap: map.get($gutters, 'ody-layout-gutter-#{$breakpoint}');
+        grid-template-columns: repeat($row, minmax(0, 1fr));
+      }
+    }
+  }
+}
+
+/// Gera rows responsivos com número máximo de colunas. A quantidade de colunas
+/// é baseada nos tokens $ody_layout_columns
+/// @group module-internal
+/// @example scss
+///   .ody-row {
+///     @include create-row-max();
+///   }
+///   /* output: .ody-row-8 {...} .ody-row-fixed-4 {...} */
+@mixin create-row-max() {
+  $rows: map-by-string($tokens-map, 'ody-layout-columns');
+  $gutters: map-by-string($tokens-map, 'ody-layout-gutter');
+  $minGutterKey: --#{str-replace(list.nth(map.keys($gutters), 1), '-', '_')};
+
+  @each $key, $row in $rows {
+    // gera .ody-row-4 .ody-row-8
+    @if (get-max($rows) > extract-fallback($row)) {
+      &-#{extract-fallback($row)} {
+        gap: var($minGutterKey, #{get-min($gutters)}rem);
+        grid-template-columns: repeat(get-min($rows), minmax(0, 1fr));
+
+        @each $key, $row-point in $rows {
+          $breakpoint: string-key-split($key, '-', 4);
+
+          @if (
+            (extract-fallback($row-point) <= extract-fallback($row)) and
+              (
+                list.index(
+                    map.keys($rows),
+                    'ody-layout-columns-#{$breakpoint}'
+                  ) !=
+                  1
+              )
+          ) {
+            @include media-q($from: $breakpoint, $media-type: 'screen') {
+              gap: map.get($gutters, 'ody-layout-gutter-#{$breakpoint}');
+              grid-template-columns: repeat($row-point, minmax(0, 1fr));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/// Gera rows não responsivos, com número fixo de colunas. A quantidade de
+/// colunas é baseada nos tokens $ody_layout_columns
+/// @group module-internal
+/// @example scss
+///   .ody-row {
+///     @include create-row-fixed();
+///   }
+///   /* output: .ody-row-fixed-12 {...} .ody-row-fixed-8 {...} ... */
+@mixin create-row-fixed() {
+  $rows: map-by-string($tokens-map, 'ody-layout-columns');
+  $rowList: list-remove-duplicate(map.values($rows));
+  $gutters: map-by-string($tokens-map, 'ody-layout-gutter');
+  $minGutterKey: --#{str-replace(list.nth(map.keys($gutters), 1), '-', '_')};
+
+  // gera .ody-row-fixed-4, ody-row-fixed-8...
+  @each $row in $rowList {
+    &-fixed-#{extract-fallback($row)} {
+      $gutters: map-by-string($tokens-map, 'ody-layout-gutter');
+
+      gap: var($minGutterKey, #{get-min($gutters)}rem);
+      grid-template-columns: repeat($row, minmax(0, 1fr));
+
+      // cria media-query para gap responsivo, baseado em tokens
+      @each $key, $gutter in $gutters {
+        $breakpoint: string-key-split($key, '-', 4);
+
+        // ignora tamanho xs, pois esse já é padrão
+        @if (
+          list.index(map.keys($rows), 'ody-layout-columns-#{$breakpoint}') != 1
+        ) {
+          @include media-q($from: $breakpoint, $media-type: 'screen') {
+            gap: $gutter;
+          }
+        }
+      }
+    }
+  }
+}
+
+/// Gera colunas e offsets responsivos e não responsivos
+/// @group module-internal
+/// @example scss
+///   .ody-col {
+///     @include create-columns();
+///   }
+///   /* output:
+///   .ody-column-1,
+///     [class*='ody-row-fixed'] .ody-column-1 {
+///     ...
+///     @media (min-width: 48rem){}
+///     @media (min-width: 64rem){}
+///     @media (min-width: 80rem){}
+///     @media (min-width: 100rem){}
+///   }
+/// */
+@mixin create-columns() {
+  $columns: map-by-string($tokens-map, 'ody-layout-columns');
+
+  // gera ody-col-[1,2,3...] ody-col-offset-[1,2,3...]
+  @for $i from 1 through get-max($columns) {
+    &-#{$i},
+    [class*='ody-row-fixed'] &-#{$i} {
+      grid-column-end: span $i;
+    }
+
+    &-offset-#{$i} {
+      @if $i < get-max($columns) {
+        grid-column-start: $i;
+      } @else {
+        grid-column-start: $i;
+      }
+    }
+
+    // gera as media-queries para as colunas responsivas para terem a mesma
+    // proporção em todas as resoluções
+    @each $key, $column in map-reverse($columns) {
+      $breakpoint: string-key-split($key, '-', 4);
+
+      @if $i >
+        extract-fallback($column) and
+        map-next-value($columns, 'ody-layout-columns-#{$breakpoint}')
+      {
+        @include media-q($until: $breakpoint, $media-type: 'screen') {
+          &-#{$i} {
+            grid-column-end: span $column;
+          }
+
+          &-offset-#{$i} {
+            grid-column-start: $column;
+          }
+        }
+      }
+    }
+  }
+
+  // gera ody-col{-offset}-[xs,sm,md...]-[1,2,3...]
+  @each $key, $column in $columns {
+    $breakpoint: string-key-split($key, '-', 4);
+
+    @include media-q($from: $breakpoint, $media-type: 'screen') {
+      @for $i from 1 through extract-fallback($column) {
+        &-#{$breakpoint}-#{$i},
+        [class*='ody-row-fixed'] &-#{$breakpoint}-#{$i} {
+          grid-column-end: span $i;
+        }
+
+        &-offset-#{$breakpoint}-#{$i},
+        [class*='ody-row-fixed'] &-offset-#{$breakpoint}-#{$i} {
+          grid-column-start: $i;
+        }
+      }
+    }
+  }
+}
+
+/// Gera gutters não responsivos
+/// @group module-internal
+/// @example scss
+///   .ody-gutters {
+///     @include create-gutters();
+///   }
+///   /* output:
+///   .ody-gutters-sm {
+///     gap: var(--ody_layout_gutter_sm, 1rem);
+///   }*/
+@mixin create-gutters() {
+  $gutters: map-by-string($tokens-map, 'ody-layout-gutter');
+
+  // gera &-(xs/sm/md/lg/xl)
+  @each $key, $gutter in $gutters {
+    &-#{string-key-split($key, '-', 4)} {
+      $breakpoint: string-key-split($key, '-', 4);
+
+      gap: #{$gutter} !important;
+    }
+  }
+}

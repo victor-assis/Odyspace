@@ -1,0 +1,177 @@
+{
+  "motion": {
+    "time": {
+      "100": {
+        "type": "motion",
+        "value": "130",
+        "theme": "global"
+      },
+      "200": {
+        "type": "motion",
+        "value": "160",
+        "theme": "global"
+      },
+      "300": {
+        "type": "motion",
+        "value": "190",
+        "theme": "global"
+      },
+      "400": {
+        "type": "motion",
+        "value": "220",
+        "theme": "global"
+      },
+      "500": {
+        "type": "motion",
+        "value": "250",
+        "theme": "global"
+      },
+      "600": {
+        "type": "motion",
+        "value": "300",
+        "theme": "global"
+      },
+      "700": {
+        "type": "motion",
+        "value": "350",
+        "theme": "global"
+      },
+      "800": {
+        "type": "motion",
+        "value": "400",
+        "theme": "global"
+      },
+      "900": {
+        "type": "motion",
+        "value": "450",
+        "theme": "global"
+      },
+      "1000": {
+        "type": "motion",
+        "value": "500",
+        "theme": "global"
+      }
+    },
+    "delay": {
+      "100": {
+        "type": "motion",
+        "value": "130",
+        "theme": "global"
+      },
+      "200": {
+        "type": "motion",
+        "value": "160",
+        "theme": "global"
+      },
+      "300": {
+        "type": "motion",
+        "value": "190",
+        "theme": "global"
+      },
+      "400": {
+        "type": "motion",
+        "value": "220",
+        "theme": "global"
+      },
+      "500": {
+        "type": "motion",
+        "value": "250",
+        "theme": "global"
+      },
+      "600": {
+        "type": "motion",
+        "value": "300",
+        "theme": "global"
+      },
+      "700": {
+        "type": "motion",
+        "value": "350",
+        "theme": "global"
+      },
+      "800": {
+        "type": "motion",
+        "value": "400",
+        "theme": "global"
+      },
+      "900": {
+        "type": "motion",
+        "value": "450",
+        "theme": "global"
+      },
+      "1000": {
+        "type": "motion",
+        "value": "500",
+        "theme": "global"
+      }
+    },
+    "easing": {
+      "linear": {
+        "type": "motion",
+        "value": "1, 1, 1, 1",
+        "theme": "global"
+      },
+      "ease": {
+        "type": "motion",
+        "value": "0.4, 0, 0.2, 1",
+        "theme": "global"
+      },
+      "easeIn": {
+        "type": "motion",
+        "value": "0.5, 0, 1, 1",
+        "theme": "global"
+      },
+      "easeOut": {
+        "type": "motion",
+        "value": "0, 0, 0.4, 1",
+        "theme": "global"
+      },
+      "easeInOut": {
+        "type": "motion",
+        "value": "0.45, 0, 0.4, 1",
+        "theme": "global"
+      },
+      "easeInBack": {
+        "type": "motion",
+        "value": "0.4, 0, 1, 1",
+        "theme": "global"
+      },
+      "easeOutBack": {
+        "type": "motion",
+        "value": "0, 0, 0.2, 1",
+        "theme": "global"
+      },
+      "easeInOutBack": {
+        "type": "motion",
+        "value": "0.4, 0, 0.2, 1",
+        "theme": "global"
+      }
+    },
+    "repeat": {
+      "none": {
+        "type": "motion",
+        "value": "0",
+        "theme": "global"
+      },
+      "infinite": {
+        "type": "motion",
+        "value": "-1",
+        "theme": "global"
+      },
+      "1x": {
+        "type": "motion",
+        "value": "1",
+        "theme": "global"
+      },
+      "2x": {
+        "type": "motion",
+        "value": "2",
+        "theme": "global"
+      },
+      "3x": {
+        "type": "motion",
+        "value": "3",
+        "theme": "global"
+      }
+    }
+  }
+}

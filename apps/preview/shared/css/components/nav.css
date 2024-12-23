@@ -1,5 +1,4 @@
 nav {
-  block-size: var(--body-rails);
   display: flex;
   align-items: center;
   justify-content: space-between;
