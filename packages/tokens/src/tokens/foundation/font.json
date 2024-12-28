@@ -1,0 +1,67 @@
+{
+  "font": {
+    "family": {
+      "roboto": {
+        "name": { "value": "Roboto", "type": "font"  },
+        "weight": {
+          "100": { "value": { "family": "Roboto", "weight": "100", "file": "Roboto-Thin", "type": "font"  } },
+          "300": { "value": { "family": "Roboto", "weight": "300", "file": "Roboto-Light", "type": "font"  } },
+          "400": { "value": { "family": "Roboto", "weight": "400", "file": "Roboto-Medium", "type": "font"  } },
+          "500": { "value": { "family": "Roboto", "weight": "500", "file": "Roboto-Regular", "type": "font"  } },
+          "700": { "value": { "family": "Roboto", "weight": "700", "file": "Roboto-Bold", "type": "font"  } },
+          "900": { "value": { "family": "Roboto", "weight": "900", "file": "Roboto-Black", "type": "font"  } }
+        }
+      },
+      "poppins": {
+        "name": { "value": "Poppins", "type": "font" },
+        "weight": {
+          "100": { "value": { "family": "Poppins", "weight": "100", "file": "Poppins-Thin", "type": "font"  } },
+          "200": { "value": { "family": "Poppins", "weight": "200", "file": "Poppins-ExtraLight", "type": "font"  } },
+          "300": { "value": { "family": "Poppins", "weight": "300", "file": "Poppins-Light", "type": "font"  } },
+          "400": { "value": { "family": "Poppins", "weight": "400", "file": "Poppins-Medium", "type": "font"  } },
+          "500": { "value": { "family": "Poppins", "weight": "500", "file": "Poppins-Regular", "type": "font"  } },
+          "600": { "value": { "family": "Poppins", "weight": "600", "file": "Poppins-SemiBold", "type": "font"  } },
+          "700": { "value": { "family": "Poppins", "weight": "700", "file": "Poppins-Bold", "type": "font"  } },
+          "800": { "value": { "family": "Poppins", "weight": "700", "file": "Poppins-ExtraBold", "type": "font"  } },
+          "900": { "value": { "family": "Poppins", "weight": "900", "file": "Poppins-Black", "type": "font"  } }
+        }
+      }
+    },
+    "size": {
+      "50": { "value": "12", "type": "font" },
+      "75": { "value": "14", "type": "font" },
+      "100": { "value": "16", "type": "font" },
+      "200": { "value": "20", "type": "font" },
+      "300": { "value": "22", "type": "font" },
+      "400": { "value": "24", "type": "font" },
+      "500": { "value": "28", "type": "font" },
+      "600": { "value": "30", "type": "font" },
+      "700": { "value": "34", "type": "font" },
+      "800": { "value": "40", "type": "font" },
+      "900": { "value": "44", "type": "font" },
+      "1000": { "value": "48", "type": "font" },
+      "1100": { "value": "56", "type": "font" },
+      "1200": { "value": "64", "type": "font" },
+      "1300": { "value": "72", "type": "font" }
+    },
+    "weight": {
+      "100": { "value": "100", "type": "font" },
+      "200": { "value": "200", "type": "font" },
+      "300": { "value": "300", "type": "font" },
+      "400": { "value": "400", "type": "font" },
+      "500": { "value": "500", "type": "font" },
+      "600": { "value": "600", "type": "font" },
+      "700": { "value": "700", "type": "font" },
+      "800": { "value": "800", "type": "font" },
+      "900": { "value": "900", "type": "font" }
+    },
+    "lineHeight": {
+      "50": { "value": "1", "type": "font" },
+      "100": { "value": "1.3", "type": "font" },
+      "200": { "value": "1.5", "type": "font" }
+    },
+    "letterSpacing": {
+      "0": { "value": "0", "type": "font" }
+    }
+  }
+}

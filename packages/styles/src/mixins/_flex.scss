@@ -1,0 +1,110 @@
+/*
+** Odyspace styles - Flexbox Mixins
+*/
+@use 'tokens' as tokens;
+@use '../functions/tokens-handler' as *;
+@use './media-query' as *;
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:map';
+
+$tokens-map: meta.module-variables(tokens);
+$properties: (
+  'flex': (
+    'direction': ('row', 'row-reverse', 'column', 'column-reverse'),
+    'wrap': ('nowrap', 'wrap', 'wrap-reverse'),
+    'grow': ('0', '1'),
+    'shrink': ('0', '1'),
+    'fill': '1 1 auto',
+  ),
+  'justify-content': (
+    'start': 'flex-start', 'end': 'flex-end', 'center': 'center',
+    'between': 'space-between', 'around': 'space-around',
+    'evenly': 'space-evenly',
+  ),
+  'align-items': (
+    'start': 'flex-start', 'end': 'flex-end', 'center': 'center',
+    'baseline': 'baseline', 'stretch': 'stretch',
+  ),
+  'align-self': (
+    'start': 'flex-start', 'end': 'flex-end', 'center': 'center',
+    'baseline': 'baseline', 'stretch': 'stretch',
+  ),
+  'align-content': (
+    'start': 'flex-start', 'end': 'flex-end', 'center': 'center',
+    'between': 'space-between', 'around': 'space-around',
+    'evenly': 'space-evenly', 'stretch': 'stretch',
+  ),
+);
+
+@mixin create-flex-helpers() {
+  $breakpoints: map-by-string($tokens-map, 'ody-layout-breakpoint');
+
+  @each $key, $breakpoint in map.keys($breakpoints) {
+    $breakpoint: string-key-split($key, '-', 4);
+
+    @each $property in map.keys($properties) {
+      @each $key, $value in map.get($properties, $property) {
+        @if meta.type-of($value: $value) == 'list' {
+          @each $value in $value {
+            @if (list.index(map.keys($breakpoints), 'ody-layout-breakpoint-#{$breakpoint}') == 1) {
+              $class-name: '';
+
+              @if ($value == '0') or ($value == '1') {
+                $class-name: #{$property}-#{$key}-#{$value};
+              }
+
+              @else {
+                $class-name: #{$property}-#{$value};
+              }
+
+              &-#{$class-name} {
+                #{$property}-#{$key}: #{$value} !important;
+              }
+            }
+
+            @else {
+              $class-name: '';
+
+              @if ($value == '0') or ($value == '1') {
+                $class-name: #{$property}-#{$breakpoint}-#{$key}-#{$value};
+              }
+
+              @else {
+                $class-name: #{$property}-#{$breakpoint}-#{$value};
+              }
+
+              @include media-q(
+                $from: $breakpoint,
+                $media-type: 'screen'
+              ) {
+                &-#{$class-name} {
+                  #{$property}-#{$key}: #{$value} !important;
+                }
+              }
+            }
+          }
+        }
+
+        @else {
+          @if (list.index(map.keys($breakpoints), 'ody-layout-breakpoint-#{$breakpoint}') == 1) {
+            &-#{$property}-#{$key} {
+              #{$property}: #{$value} !important;
+            }
+          }
+
+          @else {
+            @include media-q(
+              $from: $breakpoint,
+              $media-type: 'screen'
+            ) {
+              &-#{$property}-#{$breakpoint}-#{$key} {
+                #{$property}: #{$value} !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

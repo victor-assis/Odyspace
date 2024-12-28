@@ -1,0 +1,29 @@
+{
+  "shadow": {
+    "50": {
+      "type": "shadow",
+      "value": "0 1 2",
+      "theme": "global"
+    },
+    "75": {
+      "type": "shadow",
+      "value": "0 2 4",
+      "theme": "global"
+    },
+    "100": {
+      "type": "shadow",
+      "value": "0 4 8",
+      "theme": "global"
+    },
+    "200": {
+      "type": "shadow",
+      "value": "0 8 16",
+      "theme": "global"
+    },
+    "300": {
+      "type": "shadow",
+      "value": "0 12 22",
+      "theme": "global"
+    }
+  }
+}

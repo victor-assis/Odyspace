@@ -1,0 +1,80 @@
+/*
+** Odyspace styles - Support Mixins
+*/
+
+/// Determina seção apenas para internet Explorer
+/// @group module-mixins
+/// @example scss
+///   div {
+///     @include ody-only-for-ie {
+///       background-color: blue
+///     }
+///   }
+///   //output: será exibido background-color: blue apenas no Internet Explorer
+@mixin ody-only-for-ie {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+/// Determina seção de código apenas para desktop
+/// @group module-mixins
+/// @example scss
+///   div {
+///     @include ody-only-for-desktop {
+///       background-color: blue
+///     }
+///   }
+///   //output: será exibido background-color: blue apenas no desktop
+@mixin ody-only-for-desktop {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+/// Determina seção de código apenas para firefox
+/// @group module-mixins
+/// @example scss
+///   div {
+///     @include ody-only-for-firefox {
+///       background-color: blue
+///     }
+///   }
+///   //output: será exibido background-color: blue apenas no firefox
+@mixin ody-only-for-firefox {
+  // stylelint-disable-next-line
+  @media all and (min--moz-device-pixel-ratio: 0) {
+    @content;
+  }
+}
+
+/// Determina seção de código apenas para safari
+/// @group module-mixins
+/// @example scss
+///   div {
+///     @include ody-only-for-safari {
+///       background-color: blue
+///     }
+///   }
+///   //output: será exibido background-color: blue apenas no safari
+@mixin ody-only-for-safari {
+  // stylelint-disable-next-line
+  @media not all and (min-resolution: .001dpcm) {
+    @content;
+  }
+}
+
+/// Determina seção de código apenas para iOS
+/// @group module-mixins
+/// @example scss
+///   div {
+///     @include ody-only-for-ios {
+///       background-color: blue
+///     }
+///   }
+///   //output: será exibido background-color: blue apenas no iOS
+@mixin ody-only-for-ios {
+  @supports (-webkit-touch-callout: none) {
+    @content;
+  }
+}

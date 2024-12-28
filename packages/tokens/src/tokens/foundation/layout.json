@@ -1,0 +1,139 @@
+{
+  "layout": {
+    "breakpoint": {
+      "xs": {
+        "type": "layout",
+        "value": "576",
+        "theme": "global"
+      },
+      "sm": {
+        "type": "layout",
+        "value": "768",
+        "theme": "global"
+      },
+      "md": {
+        "type": "layout",
+        "value": "1024",
+        "theme": "global"
+      },
+      "lg": {
+        "type": "layout",
+        "value": "1280",
+        "theme": "global"
+      },
+      "xl": {
+        "type": "layout",
+        "value": "1600",
+        "theme": "global"
+      }
+    },
+    "container": {
+      "xs": {
+        "type": "layout",
+        "value": "100%",
+        "theme": "global"
+      },
+      "sm": {
+        "type": "layout",
+        "value": "720",
+        "theme": "global"
+      },
+      "md": {
+        "type": "layout",
+        "value": "960",
+        "theme": "global"
+      },
+      "lg": {
+        "type": "layout",
+        "value": "1140",
+        "theme": "global"
+      },
+      "xl": {
+        "type": "layout",
+        "value": "1440",
+        "theme": "global"
+      }
+    },
+    "columns": {
+      "xs": {
+        "type": "layout",
+        "value": "4",
+        "theme": "global"
+      },
+      "sm": {
+        "type": "layout",
+        "value": "8",
+        "theme": "global"
+      },
+      "md": {
+        "type": "layout",
+        "value": "12",
+        "theme": "global"
+      },
+      "lg": {
+        "type": "layout",
+        "value": "12",
+        "theme": "global"
+      },
+      "xl": {
+        "type": "layout",
+        "value": "12",
+        "theme": "global"
+      }
+    },
+    "gutter": {
+      "xs": {
+        "type": "layout",
+        "value": "16",
+        "theme": "global"
+      },
+      "sm": {
+        "type": "layout",
+        "value": "16",
+        "theme": "global"
+      },
+      "md": {
+        "type": "layout",
+        "value": "32",
+        "theme": "global"
+      },
+      "lg": {
+        "type": "layout",
+        "value": "32",
+        "theme": "global"
+      },
+      "xl": {
+        "type": "layout",
+        "value": "32",
+        "theme": "global"
+      }
+    },
+    "padding": {
+      "xs": {
+        "type": "layout",
+        "value": "24",
+        "theme": "global"
+      },
+      "sm": {
+        "type": "layout",
+        "value": "24",
+        "theme": "global"
+      },
+      "md": {
+        "type": "layout",
+        "value": "48",
+        "theme": "global"
+      },
+      "lg": {
+        "type": "layout",
+        "value": "56",
+        "theme": "global"
+      },
+      "xl": {
+        "type": "layout",
+        "value": "72",
+        "theme": "global"
+      }
+    }
+  }
+}

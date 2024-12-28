@@ -1,0 +1,76 @@
+/*
+** Odyspace Styles Layout
+*/
+@use 'tokens' as *;
+@use '../mixins/layout' as *;
+@use '../mixins/media-query' as *;
+
+%ody-container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+}
+
+%ody-row {
+  display: grid;
+  margin: 0;
+  width: 100%;
+}
+
+%ody-col {
+  grid-column-end: auto;
+  margin: 0;
+  width: auto;
+}
+
+/// @group module-layout
+[class*='ody-container'] {
+  @extend %ody-container;
+}
+
+/// @group module-layout
+.ody-container {
+  @include create-container();
+}
+
+/// @group module-layout
+.ody-container-fluid {
+  @include create-container-fluid();
+}
+
+/// @group module-layout
+[class*='ody-row'] {
+  @extend %ody-row;
+}
+
+/// @group module-layout
+.ody-row {
+  @include create-row();
+  @include create-row-max();
+  @include create-row-fixed();
+}
+
+/// @group module-layout
+.ody-no-gutters {
+  gap: 0 !important;
+}
+
+.ody-gutters {
+  @include create-gutters();
+}
+
+/// @group module-layout
+[class*='ody-col-'] {
+  @extend %ody-col;
+}
+
+/// @group module-layout
+.ody-col {
+  @extend %ody-col;
+
+  @include create-columns();
+}
+
+.ody-col-auto {
+  grid-row: 1 / 2;
+}

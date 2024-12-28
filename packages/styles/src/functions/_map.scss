@@ -1,0 +1,18 @@
+@use 'sass:map';
+
+/// remove elementos repetidos em um map para ter apenas elementos de cháve única
+/// @param {Map} $map - lista para ser filtrada
+/// @return {Map} - lista filtrada
+/// @example map-remove-duplicate([(a: t), (a: u)]) // -> [(a: t)]
+///
+@function map-remove-duplicate($map) {
+  $result: ();
+
+  @each $key, $value in $map {
+    @if not map.has-key($result, $key) {
+      $result: map.set($result, $key, $value);
+    }
+  }
+
+  @return $result;
+}

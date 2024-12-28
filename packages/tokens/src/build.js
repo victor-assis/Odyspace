@@ -187,7 +187,7 @@ const build = async (sd) => {
             format: 'custom/tokens-theme-json',
             options: {
               themes
-            },
+            }
           }
         ]
       },
@@ -195,10 +195,10 @@ const build = async (sd) => {
         prefix: 'ody',
         transformGroup: 'customCss',
         buildPath: 'dist/tokens/',
-        files: Object.keys(sd.tokens.font).map(fonts => ({
+        files: Object.keys(sd.tokens.font.family).map(fonts => ({
           destination: `fonts/${fonts}.css`,
           format: 'custom/fontsCss',
-          filter: token => token.attributes.category === 'font' && token.attributes.type === fonts,
+          filter: ({attributes}) => attributes.category === 'font' && attributes.item === fonts,
         })),
         actions: ['copy_fonts'],
       },

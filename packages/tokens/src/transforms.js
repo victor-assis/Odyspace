@@ -9,8 +9,7 @@ export const isSize = ({ attributes }) =>
   (attributes.category === 'size' ||
     attributes.category === 'layout' ||
     attributes.category === 'spacing') &&
-  attributes.type !== 'percent' &&
-  attributes.type !== 'weight';
+  attributes.type !== 'percent'
 
 export const transforms = [
   {
@@ -18,31 +17,21 @@ export const transforms = [
     type: 'name',
     transform: (token, options) => [options.prefix].concat(token.path).join('_')
   }, {
-    name: 'custom/color/gradient',
-    type: 'attribute',
-    filter: (prop) => prop.attributes.category === 'color' && prop.name.includes('gradient'),
-    transform: (prop) => {
-      const keys = prop.darkValue ? ['dark', 'value'] : ['value'];
-
-      for (const key of keys) {
-        if (prop[key].style !== 'linear') {
-          prop[key] = 0;
-          continue;
-        }
-
-        prop[key] = `linear-gradient(${0 - +prop[key].direction.angle + 90}deg, ${Color(prop[key].start)
-          .setAlpha(prop[key].startOpacity)
-          .toRgbString()} ${prop[key].percentStart * 100}%, ${Color(prop[key].end)
-          .setAlpha(prop[key].endOpacity)
-          .toRgbString()} ${prop[key].percentEnd * 100}%)`;
-      }
-    }
-  }, {
     name: 'custom/size/pxToRem',
     type: 'value',
     filter: isSize,
     transform: ({value, attributes}) =>
       value.includes('%') || value.includes('auto') || attributes.type === 'columns' ? value : `${value / 16}rem`
+  }, {
+    name: 'custom/text/size',
+    type: 'value',
+    filter: ({ attributes }) => attributes.category === 'font' && attributes.type === 'size',
+    transform: ({value}) => `clamp( ${(value * 0.75) / 16}rem, 1.25vw, ${value / 16}rem)`
+  }, {
+    name: 'custom/shadow',
+    type: 'value',
+    filter: ({ attributes }) => attributes.category === 'shadow',
+    transform: ({value}) =>  value.split(' ').map((v) => `${v / 16}rem`).join(' ')
   }, {
     name: 'custom/size/percent',
     type: 'value',
@@ -71,7 +60,7 @@ export const transforms = [
   }, {
     name: 'custom/text',
     type: 'value',
-    filter: ({ attributes }) =>  attributes.item === 'family' ,
+    filter: ({ attributes }) =>  attributes.category === 'font' && attributes.type === 'family' ,
     transform: ({ value }) => `"${value}"`
   }
 ];
@@ -91,7 +80,8 @@ export const transformGroups = [
       ...defaultTransforms,
       'time/seconds',
       'custom/size/pxToRem',
-      'custom/color/gradient',
+      'custom/text/size',
+      'custom/shadow',
       'custom/motion/times',
       'custom/motion/easing',
       'custom/motion/repeat',

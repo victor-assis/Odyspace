@@ -1,0 +1,26 @@
+/*
+** Odyspace styles - Hover Mixins
+*/
+@use './support' as *;
+
+/// Aplica as propriedades informadas no `hover` e `focus-visible`
+/// apenas em plataformas Desktop, e em elementos que não estejam
+/// desabilitados.
+/// @group module-mixins
+/// @example scss
+///   button {
+///     @include hover() {
+///       background-color: red;
+///     }
+///   }
+///
+@mixin hover() {
+  @include ody-only-for-desktop() {
+    // precisa ser dessa forma por causa do ':host' dos botões
+    /* stylelint-disable selector-not-notation */
+    &:hover:not(:disabled):not([aria-disabled='true']),
+    &:focus-visible:not(:disabled):not([aria-disabled='true']) {
+      @content;
+    }
+  }
+}

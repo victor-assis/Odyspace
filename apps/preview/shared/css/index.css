@@ -6,6 +6,7 @@
 
 @import './utilities/scrolling.css' layer(utilities);
 
+@import './components/gallery.css' layer(components);
 @import './components/nav.css' layer(components);
 @import './components/brand.css' layer(components);
 @import './components/link.css' layer(components);
@@ -23,7 +24,6 @@ html {
 body {
   font-family: "Roboto", system-ui;
   display: grid;
-  gap: 2rem;
   margin: 0;
   width: 100vw;
   min-height: 100vh;
@@ -76,4 +76,29 @@ main {
 
 .app {
   padding: 0 1rem;
+}
+
+
+
+
+
+/* test tokens */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+table th {
+  background-color: #f4f5f7;
+}
+.color-box {
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  border: 1px solid #ddd;
 }

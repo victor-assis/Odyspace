@@ -1,0 +1,187 @@
+{
+  "size": {
+    "dims": {
+      "0": {
+        "type": "size",
+        "value": "0",
+        "theme": "global"
+      },
+      "50": {
+        "type": "size",
+        "value": "2",
+        "theme": "global"
+      },
+      "75": {
+        "type": "size",
+        "value": "4",
+        "theme": "global"
+      },
+      "100": {
+        "type": "size",
+        "value": "8",
+        "theme": "global"
+      },
+      "200": {
+        "type": "size",
+        "value": "12",
+        "theme": "global"
+      },
+      "300": {
+        "type": "size",
+        "value": "16",
+        "theme": "global"
+      },
+      "400": {
+        "type": "size",
+        "value": "24",
+        "theme": "global"
+      },
+      "500": {
+        "type": "size",
+        "value": "32",
+        "theme": "global"
+      },
+      "600": {
+        "type": "size",
+        "value": "40",
+        "theme": "global"
+      },
+      "700": {
+        "type": "size",
+        "value": "48",
+        "theme": "global"
+      },
+      "800": {
+        "type": "size",
+        "value": "64",
+        "theme": "global"
+      },
+      "900": {
+        "type": "size",
+        "value": "80",
+        "theme": "global"
+      },
+      "1000": {
+        "type": "size",
+        "value": "96",
+        "theme": "global"
+      }
+    },
+    "spacing": {
+      "50": {
+        "type": "size",
+        "value": "2",
+        "theme": "global"
+      },
+      "75": {
+        "type": "size",
+        "value": "4",
+        "theme": "global"
+      },
+      "100": {
+        "type": "size",
+        "value": "8",
+        "theme": "global"
+      },
+      "200": {
+        "type": "size",
+        "value": "12",
+        "theme": "global"
+      },
+      "300": {
+        "type": "size",
+        "value": "16",
+        "theme": "global"
+      },
+      "400": {
+        "type": "size",
+        "value": "24",
+        "theme": "global"
+      },
+      "500": {
+        "type": "size",
+        "value": "32",
+        "theme": "global"
+      },
+      "600": {
+        "type": "size",
+        "value": "40",
+        "theme": "global"
+      },
+      "700": {
+        "type": "size",
+        "value": "48",
+        "theme": "global"
+      },
+      "800": {
+        "type": "size",
+        "value": "64",
+        "theme": "global"
+      },
+      "900": {
+        "type": "size",
+        "value": "80",
+        "theme": "global"
+      },
+      "1000": {
+        "type": "size",
+        "value": "96",
+        "theme": "global"
+      }
+    },
+    "cornerRadius": {
+      "75": {
+        "type": "size",
+        "value": "2",
+        "theme": "global"
+      },
+      "100": {
+        "type": "size",
+        "value": "4",
+        "theme": "global"
+      },
+      "200": {
+        "type": "size",
+        "value": "8",
+        "theme": "global"
+      },
+      "300": {
+        "type": "size",
+        "value": "12",
+        "theme": "global"
+      },
+      "400": {
+        "type": "size",
+        "value": "16",
+        "theme": "global"
+      },
+      "500": {
+        "type": "size",
+        "value": "28",
+        "theme": "global"
+      },
+      "full": {
+        "type": "size",
+        "value": "100%",
+        "theme": "global"
+      }
+    },
+    "borderWidth": {
+      "100": {
+        "type": "size",
+        "value": "1",
+        "theme": "global"
+      },
+      "200": {
+        "type": "size",
+        "value": "2",
+        "theme": "global"
+      },
+      "400": {
+        "type": "size",
+        "value": "4",
+        "theme": "global"
+      }
+    }
+  }
+}
