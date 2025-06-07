@@ -1,0 +1,53 @@
+/*
+** Odyspace styles - Displays Mixins
+*/
+@use 'tokens' as tokens;
+@use '../functions/tokens-handler' as *;
+@use './media-query' as *;
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:map';
+
+$tokens-map: meta.module-variables(tokens);
+$displays: 'block', 'flex', 'grid', 'inline-block', 'inline-flex', 'inline-grid', 'none',
+  'table-cell', 'table-row', 'table';
+
+/// Gera classes de display
+/// @group module-internal
+/// @example scss
+///   .ody-d {
+///     @include create-display();
+///   }
+///   /* output:
+///   @media screen and (max-width: 99.99rem){.ody-d-xl-none{display:none !important}}
+///   @media screen and (max-width: 99.99rem){.ody-d-xl-inline{display:inline !important}}
+///   @media screen and (max-width: 99.99rem){.ody-d-xl-inline-block{display:inline-block !important}}
+///   ...
+///   }
+/// */
+@mixin create-display() {
+  $breakpoints: map-by-string($tokens-map, 'ody-layout-breakpoint');
+
+  @each $key, $breakpoint in map.keys($breakpoints) {
+    $breakpoint: string-key-split($key, '-', 4);
+
+    @each $display in $displays {
+      @if (list.index(map.keys($breakpoints), 'ody-layout-breakpoint-#{$breakpoint}') == 1) {
+        &-#{$display} {
+          display: #{$display} !important;
+        }
+      }
+
+      @else {
+        @include media-q(
+          $from: $breakpoint,
+          $media-type: 'screen'
+        ) {
+          &-#{$breakpoint}-#{$display} {
+            display: #{$display} !important;
+          }
+        }
+      }
+    }
+  }
+}

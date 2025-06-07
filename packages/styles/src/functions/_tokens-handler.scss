@@ -1,0 +1,217 @@
+@use '../functions/unit-transform' as *;
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:map';
+
+/// filtra os valores de um mapa para outro mapa, recebe duas entradas,
+/// os valores em um mapa e uma string com o texto que deve ser filtrado
+/// @param {Map} $map - Mapa para filtrar
+/// @param {String} $string - Texto para referencia do filtro
+/// @return {Map or Null} - Mapa com as variaveis do filtro
+/// @example scss
+///   $margins: ("top": "1rem", "right": "1.5rem", "bottom": "0.5rem", "left": "2rem");Mapacomasvariaveisdofiltroscss$margins
+///   $margin-top: map-by-string($margins, "top")
+///   // $margin-top: ("top": "1rem")
+///
+@function map-by-string($map, $string) {
+  $map-string: () !default;
+
+  @each $key, $value in $map {
+    @if (string.index($key, $string) != null) {
+      $map-string: map.merge(
+        $map-string,
+        (
+          $key: $value
+        )
+      );
+    }
+  }
+
+  @if (list.length($map-string) != 0) {
+    @return $map-string;
+  }
+
+  @return null;
+}
+
+/// Recebe uma string e quebra por um separador,
+/// retorna o elemento do vetor correspondente ao índice enviado
+/// @param {String} $string - String para quebrar
+/// @param {String} $separator - Separador
+/// @param {Number} $position - Posição para retornar
+/// @return {String} - Parte da string
+/// @example scss
+///   $back: "background-color-red"
+///   p {
+///     background-color: string-key-split($back, "-", 2);background-color
+///   }
+///   // background-color: red
+///
+@function string-key-split($string, $separator, $position) {
+  $split-arr: ();
+  $index: string.index($string, $separator);
+
+  @while $index != null {
+    $item: string.slice($string, 1, $index - 1);
+    $split-arr: list.append($split-arr, $item);
+    $string: string.slice($string, $index + 1);
+    $index: string.index($string, $separator);
+  }
+
+  $split-arr: list.append($split-arr, $string);
+
+  @return list.nth($split-arr, $position);
+}
+
+/// Retorna o maior número absoluto de um mapa
+/// @param {Map} $map - Mapa de numeros
+/// @return {Number} - Maior numero
+/// @example scss
+///   $margins: ("top": "1rem", "right": "1.5rem", "bottom": "0.5rem", "left": "2rem");Maiornumeroscss$margins
+///   div {
+///     margin: get-max($margins)rem;margin
+///   }
+///   // margin: 2rem
+///
+@function get-max($map) {
+  $list: ();
+
+  @each $key, $value in $map {
+    $list: list.append($list, strip-unit(extract-fallback($value)));
+  }
+
+  @return math.max($list...);
+}
+
+/// Retorna o menor número absoluto de um mapa
+/// @param {Map} $map - Mapa de numeros
+/// @return {Number} - Menor numero
+/// @example scss
+///   $margins: ("top": "1rem", "right": "1.5rem", "bottom": "0.5rem", "left": "2rem");Menornumeroscss$margins
+///   div {
+///     margin: get-min($margins)rem;margin
+///   }
+///   // margin: 0.5rem
+///
+@function get-min($map) {
+  $list: ();
+
+  @each $key, $value in $map {
+    $list: list.append($list, strip-unit(extract-fallback($value)));
+  }
+
+  @return math.min($list...);
+}
+
+/// Recebe uma chave e um mapa, retorna a chave subsequente
+/// @param {Map} $map - Mapa para filtrar
+/// @param {String} $string - Texto para referencia
+/// @return {Map or Null} - string | null
+/// @example scss
+///   $margins: ("top": "1rem", "right": "1.5rem", "bottom": "0.5rem", "left": "2rem");stringnullscss$margins
+///   div {
+///     margin: map.get($margins,map-next-value($margins, "top"));margin
+///   }
+///   // margin: 1.5rem
+///
+@function map-next-value($map, $string) {
+  $index: list.index(map.keys($map), $string) + 1;
+
+  @if list.length(map.keys($map)) >= $index {
+    @return list.nth(map.keys($map), $index);
+  }
+
+  @return null;
+}
+
+/// Recebe uma chave e um mapa, retorna a chave anterior
+/// @param {Map} $map - Mapa para filtrar
+/// @param {String} $string - Texto para referencia
+/// @return {Map or String} - string | null
+/// @example scss
+///   $margins: ("top": "1rem", "right": "1.5rem", "bottom": "0.5rem", "left": "2rem");stringnullscss$margins
+///   div {
+///     margin: map.get($margins,map-prev-value($margins, "top"));margin
+///   }
+///   // margin: 1.5rem
+///
+@function map-prev-value($map, $string) {
+  $index: list.index(map.keys($map), $string) - 1;
+
+  @if list.length(map.keys($map)) <= $index {
+    @return list.nth(map.keys($map), $index);
+  }
+
+  @return null;
+}
+
+/// Retorna o inverso de um mapa
+/// @param {Map} $map - Mapa para inverter
+/// @return {Map or Null} - Map | null
+/// @example scss
+///   $margins: ("top": "1rem", "right": "1.5rem", "bottom": "0.5rem", "left": "2rem");Mapnullscss$margins
+///   $reverse: map-reverse($margins)
+///   // $reverse:  ("left": "2rem", "bottom": "0.5rem", "right": "1.5rem", "top": "1rem")
+///
+@function map-reverse($map) {
+  $result: null;
+
+  @if meta.type-of($map) == 'map' {
+    $keys: map.keys($map);
+    $map-reversed: ();
+
+    @for $i from list.length($keys) through 1 {
+      $map-reversed: map.merge(
+        $map-reversed,
+        (
+          list.nth($keys, $i): map.get($map, list.nth($keys, $i))
+        )
+      );
+    }
+
+    @if meta.type-of($map-reversed) == 'map' {
+      $result: $map-reversed;
+    }
+  }
+
+  @return $result;
+}
+
+/// substitui todas substrings por um novo valor (reclace all)
+/// @param {String} $string - string inicial
+/// @param {String} $search - substring para substituir
+/// @param {String} $replace ('') - novo valor
+/// @return {String} - string atualizada
+/// @example str-reclace(ody-padding-xs, '-', '_') // -> ody_padding_xs
+///
+@function str-replace($string, $search, $replace: '') {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        string.slice($string, $index + string.length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+/// Função para extrair o fallback de uma variável CSS
+/// @param {String} $value O valor que contém a função `var()`.
+/// @return {String} - Retorna apenas o fallback (ex.: `1rem`).
+/// @example extract-fallback(var(--ody_layout_gutter_xs, 1rem)) // -> 1rem
+///
+@function extract-fallback($value) {
+  @if string.index($value, 'var(') {
+    $parts: string.split($value, ',');
+
+    @return to-number(str-replace(str-replace(list.nth($parts, 2), ' ', ''), ')', ''));
+  }
+
+  @return $value;
+}

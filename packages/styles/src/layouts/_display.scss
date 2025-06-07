@@ -1,0 +1,9 @@
+/*
+** Odyspace Styles Displays
+*/
+@use '../mixins/display' as *;
+
+/// @group module-display
+.ody-d {
+  @include create-display();
+}

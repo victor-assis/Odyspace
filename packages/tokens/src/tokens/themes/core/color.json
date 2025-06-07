@@ -1,0 +1,42 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "value": "{color_ref.blue.500.value}", "theme": "core" },
+      "on_primary": { "value": "{color_ref.blue.50.value}", "theme": "core" },
+      "secondary": { "value": "{color_ref.purple.500.value}", "theme": "core" },
+      "on_secondary": { "value": "{color_ref.purple.50.value}", "theme": "core" },
+      "tertiary": { "value": "{color_ref.green.500.value}", "theme": "core" },
+      "on_tertiary": { "value": "{color_ref.green.50.value}", "theme": "core" }
+    },
+    "surface": {
+      "low": { "value": "{color_ref.gray.50.value}", "theme": "core" },
+      "on_low": { "value": "{color_ref.gray.500.value}", "theme": "core" },
+      "base": { "value": "{color_ref.gray.100.value}", "theme": "core" },
+      "on_base": { "value": "{color_ref.gray.900.value}", "theme": "core" },
+      "high": { "value": "{color_ref.gray.400.value}", "theme": "core" },
+      "on_high": { "value": "{color_ref.gray.50.value}", "theme": "core" },
+      "container": {
+        "lowest": { "value": "{color_ref.gray.300.value}", "theme": "core" },
+        "on_lowest": { "value": "{color_ref.gray.500.value}", "theme": "core" },
+        "low": { "value": "{color_ref.gray.400.value}", "theme": "core" },
+        "on_low": { "value": "{color_ref.gray.50.value}", "theme": "core" },
+        "neutral": { "value": "{color_ref.gray.200.value}", "theme": "core" },
+        "on_neutral": { "value": "{color_ref.gray.500.value}", "theme": "core" },
+        "high": { "value": "{color_ref.gray.500.value}", "theme": "core" },
+        "on_high": { "value": "{color_ref.gray.50.value}", "theme": "core" },
+        "highest": { "value": "{color_ref.gray.600.value}", "theme": "core" },
+        "on_highest": { "value": "{color_ref.gray.50.value}", "theme": "core" }
+      }
+    },
+    "feedback": {
+      "success": { "value": "{color_ref.green.500.value}", "theme": "core" },
+      "on_success": { "value": "{color_ref.green.50.value}", "theme": "core" },
+      "warning": { "value": "{color_ref.yellow.500.value}", "theme": "core" },
+      "on_warning": { "value": "{color_ref.yellow.50.value}", "theme": "core" },
+      "error": { "value": "{color_ref.red.500.value}", "theme": "core" },
+      "on_error": { "value": "{color_ref.red.50.value}", "theme": "core" },
+      "info": { "value": "{color_ref.blue.500.value}", "theme": "core" },
+      "on_info": { "value": "{color_ref.blue.50.value}", "theme": "core" }
+    }
+  }
+}

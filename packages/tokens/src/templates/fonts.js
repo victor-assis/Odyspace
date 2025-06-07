@@ -34,7 +34,7 @@ const generateFontFace = (family, weight, style, urls) => {
 
 export const fontsCssFormatter = (dictionary) => {
   return dictionary.allTokens.reduce((fontList, prop) => {
-    const { value: { family, weight, file } } = prop;
+    const { value: { family, weight, file } } = prop.original;
 
     if (!family) return fontList;
 

@@ -1,0 +1,12 @@
+/*
+  Odyspace styles Design System
+*/
+// @forward 'base/reset';
+
+// layout
+@forward 'layouts/layout';
+@forward 'layouts/display';
+@forward 'layouts/flex';
+
+// components
+@forward 'components/icons';

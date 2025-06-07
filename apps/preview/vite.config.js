@@ -13,7 +13,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        includePaths: ["dist/tokens"],
+        loadPaths: ["dist/tokens"],
       },
     },
   },

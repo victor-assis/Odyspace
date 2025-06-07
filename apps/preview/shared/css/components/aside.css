@@ -7,7 +7,8 @@
   padding-inline-start: var(--body-rails);
   max-width: var(--sidebar-width);
   transition: transform .6s ease-in-out;
-  min-height: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
   @media (width <= 768px) {
     transform: translateX(-100%);

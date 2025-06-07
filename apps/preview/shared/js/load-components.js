@@ -13,6 +13,12 @@ async function loadComponent(selector, url) {
   }
 }
 
-loadComponent('#header', './shared/components/header.html');
-loadComponent('#footer', './shared/components/footer.html');
-loadComponent('#aside', './shared/components/aside.html');
+export async function loadComponents() {
+  await Promise.all([
+    loadComponent('#header', './shared/components/header.html'),
+    loadComponent('#footer', './shared/components/footer.html'),
+    loadComponent('#aside', './shared/components/aside.html'),
+  ]);
+}
+
+export { loadComponent };

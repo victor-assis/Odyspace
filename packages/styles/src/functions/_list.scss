@@ -1,0 +1,26 @@
+@use 'sass:list';
+
+/// remove elementos repetidos em uma lista para ter apenas elementos únicos
+/// @author kittygiraudel - <https://kittygiraudel.com/2013/10/09/advanced-sass-list-functions-again/>
+/// @param {List} $list - lista para ser filtrada
+/// @param {Boolean} $recursive - use recursão para listas dentro de listas
+/// @return {List} - lista filtrada
+/// @example list-remove-duplicate([a, b, a]) // -> [a, b]
+///
+@function list-remove-duplicate($list, $recursive: false) {
+  $result: ();
+
+  @each $item in $list {
+    @if not list.index($result, $item) {
+      @if list.length($item) > 1 and $recursive {
+        $result: list.append($result, list-remove-duplicate($item, $recursive));
+      }
+
+      @else {
+        $result: list.append($result, $item);
+      }
+    }
+  }
+
+  @return $result;
+}
