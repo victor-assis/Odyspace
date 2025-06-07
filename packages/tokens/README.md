@@ -68,6 +68,7 @@ A **Foundation** é o núcleo que contém valores fixos e independentes de temas
 O **Theme** contém variações que personalizam os valores da Foundation com base em um contexto, como:
 - Tema claro ou escuro
 - Temas personalizados para diferentes marcas
+- Zeus, Hades e Poseidon
 
 ---
 

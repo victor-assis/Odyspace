@@ -1,0 +1,38 @@
+{
+  "typography": {
+    "family": {
+      "base": { "value": "{font.family.roboto.name.value}", "theme": "hades" },
+      "highlight": { "value": "{font.family.poppins.name.value}", "theme": "hades" }
+    },
+    "size": {
+      "50": { "value": "{font.size.50.value}", "theme": "hades" },
+      "75": { "value": "{font.size.75.value}", "theme": "hades" },
+      "100": { "value": "{font.size.100.value}", "theme": "hades" },
+      "200": { "value": "{font.size.200.value}", "theme": "hades" },
+      "300": { "value": "{font.size.300.value}", "theme": "hades" },
+      "400": { "value": "{font.size.400.value}", "theme": "hades" },
+      "500": { "value": "{font.size.500.value}", "theme": "hades" },
+      "600": { "value": "{font.size.600.value}", "theme": "hades" },
+      "700": { "value": "{font.size.700.value}", "theme": "hades" },
+      "800": { "value": "{font.size.800.value}", "theme": "hades" },
+      "900": { "value": "{font.size.900.value}", "theme": "hades" },
+      "1000": { "value": "{font.size.1000.value}", "theme": "hades" },
+      "1100": { "value": "{font.size.1100.value}", "theme": "hades" },
+      "1200": { "value": "{font.size.1200.value}", "theme": "hades" },
+      "1300": { "value": "{font.size.1300.value}", "theme": "hades" }
+    },
+    "weight": {
+      "01": { "value": "{font.weight.300.value}", "type": "hades" },
+      "02": { "value": "{font.weight.400.value}", "type": "hades" },
+      "03": { "value": "{font.weight.700.value}", "type": "hades" }
+    },
+    "lineHeight": {
+      "50": { "value": "{font.lineHeight.50.value}", "theme": "hades" },
+      "100": { "value": "{font.lineHeight.100.value}", "theme": "hades" },
+      "200": { "value": "{font.lineHeight.200.value}", "theme": "hades" }
+    },
+    "letterSpacing": {
+      "0": { "value": "{font.letterSpacing.0.value}", "theme": "hades" }
+    }
+  }
+}

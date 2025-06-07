@@ -1,0 +1,42 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "value": "{color_ref.yellow.500.value}", "theme": "zeus" },
+      "on_primary": { "value": "{color_ref.yellow.50.value}", "theme": "zeus" },
+      "secondary": { "value": "{color_ref.blue.500.value}", "theme": "zeus" },
+      "on_secondary": { "value": "{color_ref.blue.50.value}", "theme": "zeus" },
+      "tertiary": { "value": "{color_ref.orange.500.value}", "theme": "zeus" },
+      "on_tertiary": { "value": "{color_ref.orange.50.value}", "theme": "zeus" }
+    },
+    "surface": {
+      "low": { "value": "{color_ref.gray.50.value}", "theme": "zeus" },
+      "on_low": { "value": "{color_ref.gray.500.value}", "theme": "zeus" },
+      "base": { "value": "{color_ref.gray.100.value}", "theme": "zeus" },
+      "on_base": { "value": "{color_ref.gray.900.value}", "theme": "zeus" },
+      "high": { "value": "{color_ref.gray.400.value}", "theme": "zeus" },
+      "on_high": { "value": "{color_ref.gray.50.value}", "theme": "zeus" },
+      "container": {
+        "lowest": { "value": "{color_ref.gray.300.value}", "theme": "zeus" },
+        "on_lowest": { "value": "{color_ref.gray.500.value}", "theme": "zeus" },
+        "low": { "value": "{color_ref.gray.400.value}", "theme": "zeus" },
+        "on_low": { "value": "{color_ref.gray.50.value}", "theme": "zeus" },
+        "neutral": { "value": "{color_ref.gray.200.value}", "theme": "zeus" },
+        "on_neutral": { "value": "{color_ref.gray.500.value}", "theme": "zeus" },
+        "high": { "value": "{color_ref.gray.500.value}", "theme": "zeus" },
+        "on_high": { "value": "{color_ref.gray.50.value}", "theme": "zeus" },
+        "highest": { "value": "{color_ref.gray.600.value}", "theme": "zeus" },
+        "on_highest": { "value": "{color_ref.gray.50.value}", "theme": "zeus" }
+      }
+    },
+    "feedback": {
+      "success": { "value": "{color_ref.green.500.value}", "theme": "zeus" },
+      "on_success": { "value": "{color_ref.green.50.value}", "theme": "zeus" },
+      "warning": { "value": "{color_ref.yellow.500.value}", "theme": "zeus" },
+      "on_warning": { "value": "{color_ref.yellow.50.value}", "theme": "zeus" },
+      "error": { "value": "{color_ref.red.500.value}", "theme": "zeus" },
+      "on_error": { "value": "{color_ref.red.50.value}", "theme": "zeus" },
+      "info": { "value": "{color_ref.blue.500.value}", "theme": "zeus" },
+      "on_info": { "value": "{color_ref.blue.50.value}", "theme": "zeus" }
+    }
+  }
+}

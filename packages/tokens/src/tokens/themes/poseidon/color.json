@@ -1,0 +1,42 @@
+{
+  "color": {
+    "brand": {
+      "primary": { "value": "{color_ref.cyan.600.value}", "theme": "poseidon" },
+      "on_primary": { "value": "{color_ref.cyan.50.value}", "theme": "poseidon" },
+      "secondary": { "value": "{color_ref.blue.700.value}", "theme": "poseidon" },
+      "on_secondary": { "value": "{color_ref.blue.50.value}", "theme": "poseidon" },
+      "tertiary": { "value": "{color_ref.green.500.value}", "theme": "poseidon" },
+      "on_tertiary": { "value": "{color_ref.green.50.value}", "theme": "poseidon" }
+    },
+    "surface": {
+      "low": { "value": "{color_ref.gray.50.value}", "theme": "poseidon" },
+      "on_low": { "value": "{color_ref.gray.500.value}", "theme": "poseidon" },
+      "base": { "value": "{color_ref.gray.100.value}", "theme": "poseidon" },
+      "on_base": { "value": "{color_ref.gray.900.value}", "theme": "poseidon" },
+      "high": { "value": "{color_ref.gray.400.value}", "theme": "poseidon" },
+      "on_high": { "value": "{color_ref.gray.50.value}", "theme": "poseidon" },
+      "container": {
+        "lowest": { "value": "{color_ref.gray.300.value}", "theme": "poseidon" },
+        "on_lowest": { "value": "{color_ref.gray.500.value}", "theme": "poseidon" },
+        "low": { "value": "{color_ref.gray.400.value}", "theme": "poseidon" },
+        "on_low": { "value": "{color_ref.gray.50.value}", "theme": "poseidon" },
+        "neutral": { "value": "{color_ref.gray.200.value}", "theme": "poseidon" },
+        "on_neutral": { "value": "{color_ref.gray.500.value}", "theme": "poseidon" },
+        "high": { "value": "{color_ref.gray.500.value}", "theme": "poseidon" },
+        "on_high": { "value": "{color_ref.gray.50.value}", "theme": "poseidon" },
+        "highest": { "value": "{color_ref.gray.600.value}", "theme": "poseidon" },
+        "on_highest": { "value": "{color_ref.gray.50.value}", "theme": "poseidon" }
+      }
+    },
+    "feedback": {
+      "success": { "value": "{color_ref.green.500.value}", "theme": "poseidon" },
+      "on_success": { "value": "{color_ref.green.50.value}", "theme": "poseidon" },
+      "warning": { "value": "{color_ref.yellow.500.value}", "theme": "poseidon" },
+      "on_warning": { "value": "{color_ref.yellow.50.value}", "theme": "poseidon" },
+      "error": { "value": "{color_ref.red.500.value}", "theme": "poseidon" },
+      "on_error": { "value": "{color_ref.red.50.value}", "theme": "poseidon" },
+      "info": { "value": "{color_ref.cyan.600.value}", "theme": "poseidon" },
+      "on_info": { "value": "{color_ref.cyan.50.value}", "theme": "poseidon" }
+    }
+  }
+}

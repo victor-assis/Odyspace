@@ -1,0 +1,12 @@
+{
+  "component": {
+    "icon": {
+      "color": {
+        "base": { "value": "{color.surface.on_base.value}", "theme": "hades" }
+      }
+    },
+    "button": {
+      "color": { "value": "{color.brand.primary.value}", "theme": "hades" }
+    }
+  }
+}

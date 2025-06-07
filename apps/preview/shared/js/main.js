@@ -2,6 +2,7 @@ import { loadComponents } from './load-components.js';
 
 import { render } from './render.js';
 import { onLoadThemeToggle } from './theme-toggle.js';
+import { onLoadThemeSelector } from './theme-selector.js';
 import { onLoadAside } from './aside.js';
 
 import '../../../../dist/tokens/core/tokens.css';
@@ -12,6 +13,7 @@ window.onload = async () => {
   await loadComponents();
   onLoadAside();
   onLoadThemeToggle();
+  onLoadThemeSelector();
 
   document.addEventListener('click', (e) => {
     const item = e.target.closest('.icons-gallery');
